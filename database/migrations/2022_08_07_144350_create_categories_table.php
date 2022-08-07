@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('custom_url');
             $table->tinyInteger('status')->default('0');
             $table->tinyInteger('is_popular')->default('0');
+            $table->string('image');
             $table->string('meta_title');
             $table->string('meta_description');
             $table->string('meta_keywords');
