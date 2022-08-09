@@ -50,8 +50,8 @@ class CategoryController extends Controller
     {
         $category = Category::find($id);
         if ($request->hasFile('image')) {
-            $path = 'assets/uploads/category/'.$category->image;
-            if(File::exists($path)){
+            $path = 'assets/uploads/category/' . $category->image;
+            if (File::exists($path)) {
                 File::delete($path);
             }
             $file = $request->file('image');
@@ -70,5 +70,17 @@ class CategoryController extends Controller
         $category->meta_keywords = $request->input('meta_keywords');
         $category->update();
         return redirect('/dashboard')->with('status', 'Category sucessfully updated');
+    }
+    public function del($id)
+    {
+        $category = Category::find($id);
+        if ($category->image) {
+            $path = 'assets/uploads/category/' . $category->image;
+            if (File::exists($path)) {
+                File::delete($path);
+            }
+        }
+        $category->delete();
+        return redirect('/categories')->with('status', 'Category sucessfully Deleted');
     }
 }
