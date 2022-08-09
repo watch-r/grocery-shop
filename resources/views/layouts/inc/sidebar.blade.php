@@ -24,17 +24,18 @@
         </a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link" href="{{ url('add-category')}}">
-          <i class="material-icons">category</i>
-          <p>Add Category</p>
-        </a>
-      </li>
-      <li class="nav-item ">
         <a class="nav-link" href="{{ url('categories')}}">
           <i class="material-icons">category</i>
           <p>Categories</p>
         </a>
       </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="{{ url('category-add')}}">
+          <i class="material-icons">add</i>
+          <p>Add Category</p>
+        </a>
+      </li>
+      
       <li class="nav-item ">
         <a class="nav-link" href="./tables.html">
           <i class="material-icons">content_paste</i>
@@ -42,12 +43,12 @@
         </a>
       </li>
 
-      <li class="nav-item ">
+      <!-- <li class="nav-item ">
             <a class="nav-link" href="./map.html">
               <i class="material-icons">location_ons</i>
               <p>Maps</p>
             </a>
-          </li>
+          </li> -->
       <!-- <li class="nav-item ">
             <a class="nav-link" href="./notifications.html">
               <i class="material-icons">notifications</i>
