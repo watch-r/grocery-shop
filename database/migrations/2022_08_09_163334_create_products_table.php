@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->longText('description');
             $table->text('small_description');
+            $table->string('custom_url');
             $table->string('original_price');
             $table->string('tax');
             $table->string('selling_price');

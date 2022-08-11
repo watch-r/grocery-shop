@@ -44,16 +44,16 @@
       </li>
       <li class="nav-item {{ Request::is('products') ? 'active':'' }}">
         <a class="nav-link" href="{{ url('products')}}">
-          <i class="material-icons">products</i>
+          <i class="material-icons">category</i>
           <p>Products</p>
         </a>
       </li>
-      <li class="nav-item {{ Request::is('product-add') ? 'active':'' }}">
+      <!-- <li class="nav-item {{ Request::is('product-add') ? 'active':'' }}">
         <a class="nav-link" href="{{ url('product-add')}}">
           <i class="material-icons">add</i>
           <p>Add Product</p>
         </a>
-      </li>
+      </li> -->
       <!-- <li class="nav-item ">
             <a class="nav-link" href="./map.html">
               <i class="material-icons">location_ons</i>
