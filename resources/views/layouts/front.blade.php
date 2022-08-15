@@ -13,15 +13,16 @@
     </title>
 
 
-
     <!-- Fonts -->
-    <link rel="stylesheet" type="text/css"
-        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 
     <!-- Styles -->
+    <link href="{{ asset('frontend/css/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/bootstrap5.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/owl.theme.default.min.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -32,17 +33,16 @@
 
 
     <!-- Scripts -->
-    <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}" defer></script>
-    <!-- <script src="{{ asset('https://unpkg.com/default-passive-events') }}" defer></script> -->
+    <script src="{{ asset('frontend/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('frontend/js/owl.carousel.min.js') }}"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     @if(session('status'))
     <script>
-    swal("{{ session('status') }}");
+        swal("{{ session('status') }}");
     </script>
     @endif
     @yield('scripts')
-
-
 </body>
 
 </html>

@@ -5,6 +5,47 @@ Welcome to BXD Grocery Shop
 
 @section('content')
 @include('layouts.inc.slider')
-<h1>Welcome</h1>
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <h2>Featured Products</h2>
+            <div class="feature-carousel owl-carousel">
+                @foreach($feature_product as $item)
+                <div class="item">
+                    <div class="card">
+                        <img src="{{ asset('assets/uploads/products/'.$item->product_image) }}" alt="Image of the Product">
+                        <div class="card-body">
+                            <h5>{{ $item->name }}</h5>
+                            <span class="float-start">{{ $item->selling_price }}</span>
+                            <span class="float-end"><s>{{ $item->original_price }}</s></span>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
 
+        </div>
+    </div>
+</div>
+
+@endsection
+
+@section('scripts')
+<script>
+    var owl = $('.feature-carousel');
+    owl.owlCarousel({
+        items:4,
+        loop:true,
+        margin:10,
+        autoplay:true,
+        autoplayTimeout:1000,
+        autoplayHoverPause:true
+    });
+    $('.play').on('click',function(){
+        owl.trigger('play.owl.autoplay',[1000])
+    })
+    $('.stop').on('click',function(){
+        owl.trigger('stop.owl.autoplay')
+    })
+</script>
 @endsection
