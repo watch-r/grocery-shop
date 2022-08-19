@@ -23,6 +23,12 @@
     <link href="{{ asset('frontend/css/custom.css') }}" rel="stylesheet">
     <link href="{{ asset('frontend/css/owl.theme.default.min.css') }}" rel="stylesheet">
 
+    <style>
+        a{
+            text-decoration: none !important;
+            color: darkslategrey;
+        }
+    </style>
 </head>
 
 <body>

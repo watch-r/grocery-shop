@@ -34,15 +34,18 @@ Welcome to BXD Grocery Shop
             <div class="feature-carousel owl-carousel owl-theme">
                 @foreach($popular_category as $item)
                 <div class="item">
-                    <div class="card">
-                        <img src="{{ asset('assets/uploads/category/'.$item->image) }}" alt="Image of the Category">
-                        <div class="card-body">
-                            <h5>{{ $item->name }}</h5>
-                            <p>
-                                {{ $item->description }}
-                            </p>
+                    <a href="{{ url('view-category/'.$item->custom_url) }}">
+                        <div class="card">
+                            <img src="{{ asset('assets/uploads/category/'.$item->image) }}" alt="Image of the Category">
+                            <div class="card-body">
+                                <h5>{{ $item->name }}</h5>
+                                <p>
+                                    {{ $item->description }}
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
+
                 </div>
                 @endforeach
             </div>
@@ -57,17 +60,17 @@ Welcome to BXD Grocery Shop
 <script>
     var owl = $('.feature-carousel');
     owl.owlCarousel({
-        items:4,
-        loop:true,
-        margin:10,
-        autoplay:true,
-        autoplayTimeout:1000,
-        autoplayHoverPause:true
+        items: 4,
+        loop: true,
+        margin: 10,
+        autoplay: true,
+        autoplayTimeout: 1000,
+        autoplayHoverPause: true
     });
-    $('.play').on('click',function(){
-        owl.trigger('play.owl.autoplay',[1000])
+    $('.play').on('click', function() {
+        owl.trigger('play.owl.autoplay', [1000])
     })
-    $('.stop').on('click',function(){
+    $('.stop').on('click', function() {
         owl.trigger('stop.owl.autoplay')
     })
 </script>
