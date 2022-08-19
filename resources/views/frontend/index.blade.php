@@ -9,7 +9,7 @@ Welcome to BXD Grocery Shop
     <div class="container">
         <div class="row">
             <h2>Featured Products</h2>
-            <div class="feature-carousel owl-carousel">
+            <div class="feature-carousel owl-carousel owl-theme">
                 @foreach($feature_product as $item)
                 <div class="item">
                     <div class="card">
@@ -18,6 +18,29 @@ Welcome to BXD Grocery Shop
                             <h5>{{ $item->name }}</h5>
                             <span class="float-start">{{ $item->selling_price }}</span>
                             <span class="float-end"><s>{{ $item->original_price }}</s></span>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="py-5">
+    <div class="container">
+        <div class="row">
+            <h2>Popular Categories</h2>
+            <div class="feature-carousel owl-carousel owl-theme">
+                @foreach($popular_category as $item)
+                <div class="item">
+                    <div class="card">
+                        <img src="{{ asset('assets/uploads/category/'.$item->image) }}" alt="Image of the Category">
+                        <div class="card-body">
+                            <h5>{{ $item->name }}</h5>
+                            <p>
+                                {{ $item->description }}
+                            </p>
                         </div>
                     </div>
                 </div>
