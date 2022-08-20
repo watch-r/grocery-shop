@@ -24,11 +24,25 @@ class FrontendController extends Controller
     {
         if (Category::where('custom_url', $custom_url)->exists()) {
             $category = Category::where('custom_url', $custom_url)->first();
-            $products = Product::where('category_id', $category->id)->where('status','0')->get();
-            return view('frontend.products.index',compact('category','products'));
+            $products = Product::where('category_id', $category->id)->where('status', '0')->get();
+            return view('frontend.products.index', compact('category', 'products'));
         } else {
             return redirect('/')->with('status', 'Link is Broken');
         }
-        
+    }
+    public function view_product($category_custom_url, $product_custom_url)
+    {
+        if (Category::where('custom_url', $category_custom_url)->exists()) {
+            if(Product::where('custom_url',$product_custom_url)->exists()){
+                $products = Product::where('custom_url', $product_custom_url)->first();
+                return view('frontend.products.productview',compact('products'));
+            }
+            else{
+                return redirect('/')->with('status','No Such Product Found');
+            }
+        }
+        else{
+            return redirect('/')->with('status','Link is Broken');
+        }
     }
 }

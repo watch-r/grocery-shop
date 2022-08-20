@@ -1,0 +1,19 @@
+/* CSS frontend*/
+body{
+    font-family: 'Fira Sans', sans-serif;
+}
+.des-name{
+    padding: 1rem .5rem;
+}
+.des-p{
+    padding: 1rem .5rem;
+}
+.pro-image{
+    width: 100%;
+    padding: .5rem .5rem;
+    background-color: white;
+}
+a{
+    text-decoration: none !important;
+    color: darkslategrey;
+}
