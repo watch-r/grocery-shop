@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\FrontendController;
 
 
@@ -26,7 +27,7 @@ Route::get('category/{category_custom_url}/{product_custom_url}',[FrontendContro
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::post('add-to-cart',[CartController::class,'add']);
 
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
