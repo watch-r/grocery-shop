@@ -79,53 +79,6 @@
     </div>
 @endsection
 
-@section('scripts')
-    <script>
-        $(document).ready(function() {
-            $('.addToCartBtn').click(function(e) {
-                e.preventDefault();
+{{-- @section('scripts')
 
-                var product_id = $(this).closest('.product_data').find('.product_id').val();
-                var product_qty = $(this).closest('.product_data').find('.qty-inp').val();
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    type: "POST",
-                    url: "/add-to-cart",
-                    data: {
-                        'product_id': product_id,
-                        'product_qty': product_qty,
-                    },
-                    success: function(response) {
-                        swal(response.status);
-                    }
-                });
-            });
-            $('.increase-btn').click(function(e) {
-                e.preventDefault();
-
-                var value_inc = $('.qty-inp').val();
-                var value = parseInt(value_inc, 10);
-                value = isNaN(value) ? 0 : value;
-                if (value < 10) {
-                    value++;
-                    $('.qty-inp').val(value);
-                }
-            });
-            $('.decrease-btn').click(function(e) {
-                e.preventDefault();
-
-                var value_dec = $('.qty-inp').val();
-                var value = parseInt(value_dec, 10);
-                value = isNaN(value) ? 0 : value;
-                if (value > 1) {
-                    value--;
-                    $('.qty-inp').val(value);
-                }
-            });
-        });
-    </script>
-@endsection
+@endsection --}}

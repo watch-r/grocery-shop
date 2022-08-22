@@ -13,6 +13,9 @@ body{
     padding: .5rem .5rem;
     background-color: white;
 }
+.cart-img{
+    width: 50%;
+}
 a{
     text-decoration: none !important;
     color: darkslategrey;
