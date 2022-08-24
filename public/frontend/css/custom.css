@@ -20,3 +20,15 @@ a{
     text-decoration: none !important;
     color: darkslategrey;
 }
+.form-checkout label{
+    font-size: .9rem;
+    font-weight: 700;
+}
+.form-checkout input{
+    font-size: 1rem;
+    padding: .5rem;
+    font-weight: 400;
+}
+.cont{
+    padding: 3rem;
+}

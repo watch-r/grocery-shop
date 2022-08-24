@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Front\CartController;
+use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Front\FrontendController;
 
 
@@ -29,8 +30,12 @@ Auth::routes();
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('add-to-cart',[CartController::class,'add']);
 Route::post('delete-cart-item',[CartController::class, 'delete']);
+Route::post('update-cart',[CartController::class, 'update']);
+
 Route::middleware('auth')->group(function () {
     Route::get('cart',[CartController::class, 'viewcart']);
+    Route::get('checkout',[CheckoutController::class, 'index']);
+    Route::post('place-order',[CheckoutController::class, 'place_order']);
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {

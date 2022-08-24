@@ -53,4 +53,18 @@ class CartController extends Controller
             return response()->json(['status' => "You Must be Logged In to Continue"]);
         }
     }
+    public function update(Request $request)
+    {
+        $product_id = $request->input('product_id');
+        $product_qty = $request->input('product_qty');
+
+        if(Auth::check()){
+            if(Cart::where('product_id',$product_id)->where('user_id',Auth::id())->exists()){
+                $cart = Cart::where('product_id',$product_id)->where('user_id',Auth::id())->first();
+                $cart->product_qty = $product_qty;
+                $cart->update();
+                return response()->json(['status' => "Quantity updated Successfully"]);
+            }
+        }
+    }
 }
