@@ -38,6 +38,9 @@
                         <a class="dropdown-item" href="{{ url('/admin-user') }}">
                             My Profile
                         </a>
+                        <a class="dropdown-item" href="{{ url('my-orders') }}">
+                            My Orders
+                        </a>
                         <a class="dropdown-item" href="{{ url('cart') }}">
                             My Cart
                         </a>

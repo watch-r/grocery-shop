@@ -8,12 +8,15 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>
+        @yield('title')
+    </title>
 
 
 
     <!-- Fonts -->
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" type="text/css"
+        href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 
     <!-- Styles -->
@@ -46,10 +49,10 @@
     <!-- <script src="{{ asset('https://unpkg.com/default-passive-events') }}" defer></script> -->
     <script src="{{ asset('admin/js/perfect-scrollbar.jquery.min.js') }}" defer></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    @if(session('status'))
-    <script>
-        swal("{{ session('status') }}");
-    </script>
+    @if (session('status'))
+        <script>
+            swal("{{ session('status') }}");
+        </script>
     @endif
     @yield('scripts')
 

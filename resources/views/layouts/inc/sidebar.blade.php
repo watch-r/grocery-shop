@@ -5,8 +5,8 @@
         Tip 2: you can also add an image using data-image tag
     -->
     <div class="logo">
-        <a href="#" class="simple-text logo-normal">
-            Grocery Shop
+        <a href="{{url('/')}}" class="simple-text logo-normal">
+           BXD Grocery Shop
         </a>
     </div>
     <div class="sidebar-wrapper">
@@ -23,55 +23,31 @@
                     <p>User Profile</p>
                 </a>
             </li>
+            <li class="nav-item {{ Request::is('users') ? 'active':'' }}">
+                <a class="nav-link" href="{{ url('users')}}">
+                    <i class="material-icons">persons</i>
+                    <p>Users</p>
+                </a>
+            </li>
             <li class="nav-item {{ Request::is('categories')|Request::is('category-add') ? 'active':'' }}">
                 <a class="nav-link" href="{{ url('categories')}}">
                     <i class="material-icons">category</i>
                     <p>Categories</p>
                 </a>
             </li>
-            <!-- <li class="nav-item {{ Request::is('category-add') ? 'active':'' }}">
-        <a class="nav-link" href="{{ url('category-add')}}">
-          <i class="material-icons">add</i>
-          <p>Add Category</p>
-        </a>
-      </li> -->
 
-            <li class="nav-item {{ Request::is('tables') ? 'active':'' }}">
-                <a class="nav-link" href="{{ url('tables') }}">
+            <li class="nav-item {{ Request::is('orders') ? 'active':'' }}">
+                <a class="nav-link" href="{{ url('orders') }}">
                     <i class="material-icons">content_paste</i>
-                    <p>Table List</p>
+                    <p>Orders</p>
                 </a>
             </li>
-            <li class="nav-item {{ Request::is('products') |Request::is('product-add') ? 'active':'' }}">
+            <li class="nav-item {{ Request::is('products') | Request::is('product-add') ? 'active':'' }}">
                 <a class="nav-link" href="{{ url('products')}}">
                     <i class="material-icons">category</i>
                     <p>Products</p>
                 </a>
             </li>
-            <!-- <li class="nav-item {{ Request::is('product-add') ? 'active':'' }}">
-        <a class="nav-link" href="{{ url('product-add')}}">
-          <i class="material-icons">add</i>
-          <p>Add Product</p>
-        </a>
-      </li> -->
-            <!-- <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
-              <i class="material-icons">location_ons</i>
-              <p>Maps</p>
-            </a>
-          </li> -->
-            <!-- <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
-            </a>
-          </li> -->
-            <!-- <li class="nav-item active-pro ">
-                <a class="nav-link" href="./upgrade.html">
-                    <i class="material-icons">unarchive</i>
-                    <p>Upgrade to PRO</p>
-                </a>
-            </li> -->
         </ul>
     </div>
 </div>

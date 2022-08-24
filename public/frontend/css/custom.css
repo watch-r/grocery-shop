@@ -1,34 +1,50 @@
 /* CSS frontend*/
-body{
-    font-family: 'Fira Sans', sans-serif;
+body {
+    font-family: "Fira Sans", sans-serif;
 }
-.des-name{
-    padding: 1rem .5rem;
+.des-name {
+    padding: 1rem 0.5rem;
 }
-.des-p{
-    padding: 1rem .5rem;
+.des-p {
+    padding: 1rem 0.5rem;
 }
-.pro-image{
+.pro-image {
     width: 100%;
-    padding: .5rem .5rem;
+    padding: 0.5rem 0.5rem;
     background-color: white;
 }
-.cart-img{
+.cart-img {
     width: 50%;
 }
-a{
+.ord-img {
+    width: 20%;
+}
+a {
     text-decoration: none !important;
     color: darkslategrey;
 }
-.form-checkout label{
-    font-size: .9rem;
+.form-checkout label {
+    font-size: 0.9rem;
     font-weight: 700;
 }
-.form-checkout input{
+.form-checkout input {
     font-size: 1rem;
-    padding: .5rem;
+    padding: 0.5rem;
     font-weight: 400;
 }
-.cont{
+.cont {
     padding: 3rem;
 }
+.ord-details label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.ord-details div {
+    font-size: 0.9rem;
+    padding: 0.4rem;
+}
+.colour {
+    background-color:rgba(0, 128, 255, 0.883);
+    color: white;
+}
+
