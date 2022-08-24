@@ -28,42 +28,50 @@
                             <div class="row form-checkout">
                                 <div class="col-md-6">
                                     <label for="firstname">First Name</label>
-                                    <input type="text" name="fname" value="{{ Auth::user()->name }}" class="form-control" placeholder="Enter First Name">
+                                    <input type="text" name="fname" value="{{ Auth::user()->name }}" class="form-control firstname" placeholder="Enter First Name">
+                                    <span id="fname_error" class=" war-text" ></span>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="lastname">Last Name</label>
-                                    <input type="text" name="lname" value="{{ Auth::user()->lname }}" class="form-control" placeholder="Enter Last Name">
+                                    <input type="text" name="lname" value="{{ Auth::user()->lname }}" class="form-control lastname" placeholder="Enter Last Name">
+                                    <span id="lname_error" class=" war-text" ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="email">Email</label>
-                                    <input type="email" name="email" value="{{ Auth::user()->email }}" class="form-control" placeholder="Enter Email">
+                                    <input type="email" name="email" value="{{ Auth::user()->email }}" class="form-control email" placeholder="Enter Email">
+                                    <span id="email_error" class=" war-text" ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="">Contact Number</label>
-                                    <input type="text" name="phone" value="{{ Auth::user()->phone }}" class="form-control" placeholder="Enter Contact Number">
+                                    <input type="text" name="phone" value="{{ Auth::user()->phone }}" class="form-control phone" placeholder="Enter Contact Number">
+                                    <span id="phone_error" class=" war-text" ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="">Address 1</label>
-                                    <input type="text" name="address1" value="{{ Auth::user()->address1 }}" class="form-control" placeholder="Enter Address 1">
+                                    <input type="text" name="address1" value="{{ Auth::user()->address1 }}" class="form-control address1" placeholder="Enter Address 1">
+                                    <span id="address1_error" class=" war-text" ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="">Address 2</label>
-                                    <input type="text" name="address2" value="{{ Auth::user()->address2 }}" class="form-control" placeholder="Enter Address 2">
+                                    <input type="text" name="address2" value="{{ Auth::user()->address2 }}" class="form-control address2" placeholder="Enter Address 2">
+                                    <span id="address2_error" class=" war-text" ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="">City</label>
-                                    <input type="text" name="city" value="{{ Auth::user()->city }}" class="form-control" placeholder="Enter City">
+                                    <input type="text" name="city" value="{{ Auth::user()->city }}" class="form-control city" placeholder="Enter City">
+                                    <span id="city_error" class=" war-text" ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <label for="">Country</label>
-                                    <input type="text" name="country" class="form-control" placeholder="Enter Country"
+                                    <input type="text" name="country" class="form-control country" placeholder="Enter Country"
                                         value="{{ Auth::user()->country}}">
+                                        <span id="country_error" class=" war-text" ></span>
                                 </div>
                                 <div class="col-md-6 mt-3">
-                                    <label for="">Pin Code</label>
-                                    <input type="number" value="{{ Auth::user()->pincode }}" name="pincode" class="form-control" placeholder="Enter Pin Code">
+                                    <label for="">Zip Code</label>
+                                    <input type="number" value="{{ Auth::user()->pincode }}" name="pincode" class="form-control pincode" placeholder="Enter Zip Code">
+                                    <span id="pincode_error" class=" war-text" ></span>
                                 </div>
-                                <input type="hidden" name="total">
                             </div>
                         </div>
                     </div>
@@ -98,13 +106,17 @@
                                 </tbody>
                             </table>
                             <hr>
-
                             <h6>Total Price: <strong>Tk. {{ $total }}</strong></h6>
-                            <button type="submit" class="btn btn-primary float-end">Place Order</button>
+                            <button type="submit" class="btn btn-primary bg-success w-100">Place Order | COD</button>
+                            <button type ='button'class="btn btn-primary w-100 mt-3 razorpay-btn">Pay With Razor Pay</button>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
+@endsection
+
+@section('scripts')
+
 @endsection

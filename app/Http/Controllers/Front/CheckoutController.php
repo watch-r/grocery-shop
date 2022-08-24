@@ -30,7 +30,7 @@ class CheckoutController extends Controller
     {
         $order = new Order();
         $order->user_id = Auth::id();
-        $order->total=$request ->input('total');
+        $order->total = $request->input('total');
         $order->fname = $request->input('fname');
         $order->lname = $request->input('lname');
         $order->email = $request->input('email');
@@ -41,13 +41,13 @@ class CheckoutController extends Controller
         $order->country = $request->input('country');
         $order->pincode = $request->input('pincode');
 
-        $total=0;
+        $total = 0;
         $cartitems_total = Cart::where('user_id', Auth::id())->get();
-        foreach($cartitems_total as $prod){
+        foreach ($cartitems_total as $prod) {
             $price = $prod->products->selling_price * $prod->product_qty;
             $total += $price;
         }
-        $order->total =$total;
+        $order->total = $total;
 
         $order->track_no = 'bxd' . rand(1111, 9999);
         $order->save();
@@ -60,7 +60,7 @@ class CheckoutController extends Controller
                 'qty' => $item->product_qty,
                 'price' => $item->products->selling_price,
             ]);
-            $prod= Product::where('id', $item->product_id)->first();
+            $prod = Product::where('id', $item->product_id)->first();
             $prod->qty = $prod->qty - $item->product_qty;
             $prod->update();
         }
@@ -79,6 +79,38 @@ class CheckoutController extends Controller
         }
         $ordereditems = Cart::where('user_id', Auth::id())->get();
         Cart::destroy($ordereditems);
-        return redirect('/')->with('status',"Order is placed, Thank you");
+        return redirect('/')->with('status', "Order is placed, Thank you");
+    }
+    public function razorpaycheck(Request $request)
+    {
+        $cartitems = Cart::where('user_id', Auth::id())->get();
+        $total = 0;
+        foreach ($cartitems as $item) {
+            $price = $item->products->selling_price * $item->product_qty;
+            $total += $price;
+        }
+
+        $firstname = $request->input('firstname');
+        $lastname = $request->input('lastname');
+        $email = $request->input('email');
+        $phone = $request->input('phone');
+        $address1 = $request->input('address1');
+        $address2 = $request->input('address2');
+        $city = $request->input('city');
+        $country = $request->input('country');
+        $pincode = $request->input('pincode');
+
+        return response()->json([
+            'firstname' => $firstname,
+            'lastname' => $lastname,
+            'email' => $email,
+            'phone' => $phone,
+            'address1' => $address1,
+            'address2' => $address2,
+            'city' => $city,
+            'country' => $country,
+            'pincode' => $pincode,
+            'total' => $total,
+        ]);
     }
 }

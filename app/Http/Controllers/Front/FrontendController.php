@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Models\Rating;
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 
 class FrontendController extends Controller
 {
@@ -33,16 +34,21 @@ class FrontendController extends Controller
     public function view_product($category_custom_url, $product_custom_url)
     {
         if (Category::where('custom_url', $category_custom_url)->exists()) {
-            if(Product::where('custom_url',$product_custom_url)->exists()){
+            if (Product::where('custom_url', $product_custom_url)->exists()) {
                 $products = Product::where('custom_url', $product_custom_url)->first();
-                return view('frontend.products.productview',compact('products'));
+                $ratings = Rating::where('prod_id', $products->id)->get();
+                $sum_rated = Rating::where('prod_id', $products->id)->sum('stars_rated');
+                if ($ratings->count() > 0) {
+                    $rating_value = $sum_rated / $ratings->count();
+                } else {
+                    $rating_value = 0;
+                }
+                return view('frontend.products.productview', compact('products', 'ratings', 'rating_value'));
+            } else {
+                return redirect('/')->with('status', 'No Such Product Found');
             }
-            else{
-                return redirect('/')->with('status','No Such Product Found');
-            }
-        }
-        else{
-            return redirect('/')->with('status','Link is Broken');
+        } else {
+            return redirect('/')->with('status', 'Link is Broken');
         }
     }
 }

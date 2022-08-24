@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Front\CartController;
 use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Front\FrontendController;
+use App\Http\Controllers\Front\RatingController;
+use App\Http\Controllers\Front\ReviewController;
 use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\OrderController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -41,6 +43,10 @@ Route::middleware('auth')->group(function () {
     Route::post('place-order', [CheckoutController::class, 'place_order']);
     Route::get('my-orders', [UserController::class, 'index']);
     Route::get('view-order/{id}', [UserController::class, 'view']);
+    Route::post('procced-to-pay',[CheckoutController::class,'razorpaycheck']);
+    Route::post('add-rating',[RatingController::class, 'add']);
+    Route::get('add-review/{product_url}/userreview',[ReviewController::class, 'add']);
+    Route::post('add-review',[ReviewController::class,'create']);
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
