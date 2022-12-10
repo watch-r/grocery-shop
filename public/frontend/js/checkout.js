@@ -125,7 +125,7 @@ $(document).ready(function () {
             city_error == null ||
             country_error == null ||
             pincode_error == null
-        ) { 
+        ) {
             return false;
         } else {
             var data = {
@@ -139,7 +139,7 @@ $(document).ready(function () {
                 country: country,
                 pincode: pincode,
             };
-            alert("heyboy");
+
             $.ajaxSetup({
                 headers: {
                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr(
@@ -152,7 +152,7 @@ $(document).ready(function () {
                 url: "procced-to-pay",
                 data: data,
                 success: function (response) {
-                    alert(response.total);
+                    swal("Done Payment","success");
                 },
             });
         }

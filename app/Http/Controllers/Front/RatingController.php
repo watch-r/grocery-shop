@@ -19,7 +19,7 @@ class RatingController extends Controller
         $product_check = Product::where('id', $product_id)->where('status', '0')->first();
         if ($product_check) {
             $verified_purchase = Order::where('orders.user_id', Auth::id())->join('order_items', 'orders.id', 'order_items.order_id')->where('order_items.product_id', $product_id)->get();
-            if ($verified_purchase->count > 0) {
+            if ($verified_purchase->count() > 0) {
                 $rated = Rating::where('user_id', Auth::id())->where('prod_id', $product_id)->first();
                 if ($rated) {
 

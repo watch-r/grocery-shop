@@ -11,6 +11,7 @@
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
         "laravel/ui": "*",
+        "stripe/stripe-php": "^9.3",
         "twbs/bootstrap": "5.2.0"
     },
     "require-dev": {

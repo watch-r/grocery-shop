@@ -10,8 +10,10 @@ use App\Http\Controllers\Front\CheckoutController;
 use App\Http\Controllers\Front\FrontendController;
 use App\Http\Controllers\Front\RatingController;
 use App\Http\Controllers\Front\ReviewController;
+// use App\Http\Controllers\Front\StripeController;
 use App\Http\Controllers\Front\UserController;
 use App\Http\Controllers\OrderController;
+use App\Models\Review;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -26,13 +28,15 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/', [FrontendController::class, 'index']);
+// Route::get('index', [FrontendController::class, 'index']);
 Route::get('category', [FrontendController::class, 'category']);
 Route::get('category/{custom_url}', [FrontendController::class, 'view_category']);
 Route::get('category/{category_custom_url}/{product_custom_url}', [FrontendController::class, 'view_product']);
-
+Route::get('product-list',[FrontendController::class,'list']);
+Route::post('searchproduct',[FrontendController::class,'search']);
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('add-to-cart', [CartController::class, 'add']);
 Route::post('delete-cart-item', [CartController::class, 'delete']);
 Route::post('update-cart', [CartController::class, 'update']);
@@ -43,10 +47,17 @@ Route::middleware('auth')->group(function () {
     Route::post('place-order', [CheckoutController::class, 'place_order']);
     Route::get('my-orders', [UserController::class, 'index']);
     Route::get('view-order/{id}', [UserController::class, 'view']);
+
     Route::post('procced-to-pay',[CheckoutController::class,'razorpaycheck']);
+
     Route::post('add-rating',[RatingController::class, 'add']);
+
     Route::get('add-review/{product_url}/userreview',[ReviewController::class, 'add']);
+    Route::get('edit-review/{product_url}/userreview',[ReviewController::class, 'edit']);
     Route::post('add-review',[ReviewController::class,'create']);
+    Route::put('update-review', [ReviewController::class,'update'] );
+
+    // Route::get('cardpay',[StripeController::class, 'call']);
 });
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {

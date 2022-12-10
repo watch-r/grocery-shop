@@ -17,7 +17,7 @@
                                     <img src="{{ asset('assets/uploads/products/' . $item->product_image) }}"
                                         alt="Image of the Product">
                                     <div class="card-body">
-                                        <h5>{{ $item->name }}</h5>
+                                        <h5 class="write-des"   >{{ $item->name }}</h5>
                                         <span class="float-start">{{ $item->selling_price }}</span>
                                         <span class="float-end"><s>{{ $item->original_price }}</s></span>
                                     </div>
@@ -38,12 +38,12 @@
                     @foreach ($popular_category as $item)
                         <div class="item">
                             <a href="{{ url('category/' . $item->custom_url) }}">
-                                <div class="card">
+                                <div class="card card-set">
                                     <img src="{{ asset('assets/uploads/category/' . $item->image) }}"
                                         alt="Image of the Category">
                                     <div class="card-body">
                                         <h5>{{ $item->name }}</h5>
-                                        <p>
+                                        <p class="write-des">
                                             {{ $item->description }}
                                         </p>
                                     </div>

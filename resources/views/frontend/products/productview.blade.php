@@ -73,20 +73,20 @@
                         <label class="me-3">Price: <s>Tk. {{ $products->original_price }}</s></label>
                         <label class="fw-bold">Tk. {{ $products->selling_price }}</label>
                         @php
-                            $ratenum=number_format($rating_value);
+                            $ratenum = number_format($rating_value);
                         @endphp
                         <div class="rating">
-                            @for ($i=1;$i<=$ratenum;$i++)
-                            <i class="fa fa-star checked"></i>
+                            @for ($i = 1; $i <= $ratenum; $i++)
+                                <i class="fa fa-star checked"></i>
                             @endfor
-                            @for ($j = $ratenum+1; $j<= 5;$j++)
-                            <i class="fa fa-star"></i>
+                            @for ($j = $ratenum + 1; $j <= 5; $j++)
+                                <i class="fa fa-star"></i>
                             @endfor
                             <span>
-                                @if ($ratings->count()<=0)
+                                @if ($ratings->count() <= 0)
                                     No Ratings yet
                                 @else
-                                {{ $ratings->count()}} Ratings
+                                    {{ $ratings->count() }} Ratings
                                 @endif
 
                             </span>
@@ -117,26 +117,64 @@
                             <button type="button" class="btn btn-success me-3 float-lg-start">Add to Wishlist <i
                                     class="fa fa-heart"></i> </button>
                             @if ($products->qty > 0)
-                                <button type="button" class="btn addToCartBtn btn-primary me-3 float-lg-start">Add to Cart
+                                <button type="button" class="btn addToCartBtn btn-primary me-3 float-lg-start">Add to
+                                    Cart
                                     <i class="fa fa-shopping-cart"></i> </button>
                             @endif
                         </div>
                     </div>
+                    <hr>
+                    <h3>Description</h3>
+                    <p class="des-p mt-3">
+                        {!! $products->description !!}
+                    </p>
                 </div>
-            </div>
-            <div class="des-name col-md-12">
-                <hr>
-                <h3>Description</h3>
-                <p class="des-p mt-3">
-                    {!! $products->description !!}
-                </p>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Rate this Product
-                </button>
-                <a href='{{ url('add-review/'.$products->custom_url.'/userreview') }}' class="btn btn-link">
-                    Write A review
-                </a>
+                <div class="row">
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-primary py-2" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Rate this Product
+                        </button>
+                        <a href='{{ url('add-review/' . $products->custom_url . '/userreview') }}'
+                            class="btn btn-link py-2">
+                            Write A review
+                        </a>
+                    </div>
+                    <div class="com-md-8 py-2 float-end">
+                        @foreach ($reviews as $review)
+                            <div class="user-review">
+                                <label>{{ $review->users->name . ' ' . $review->users->lname }}</label>
+                                @if ($review->user_id == Auth::id())
+                                    <a href="{{ url('edit-review/' . $products->custom_url . '/userreview') }}"
+                                        class="btn btn-outline-primary">edit</a>
+                                @endif
+                                <br>
+                                @php
+                                    $rating = App\Models\Rating::where('prod_id', $products->id)
+                                        ->where('user_id', $review->users->id)
+                                        ->first();
+                                @endphp
+                                @if ($rating)
+                                    @php
+                                        $user_rated = $rating->stars_rated;
+                                    @endphp
+                                    @for ($i = 1; $i <= $user_rated; $i++)
+                                        <i class="fa fa-star checked"></i>
+                                    @endfor
+                                    @for ($j = $user_rated + 1; $j <= 5; $j++)
+                                        <i class="fa fa-star"></i>
+                                    @endfor
+                                @endif
+                                <br>
+                                <small>Reviewed on {{ $review->created_at->format('d M Y') }}</small>
+                                <p>
+                                    {{ $review->user_review }}
+                                </p>
+                            </div>
+                        @endforeach
 
+                    </div>
+                </div>
             </div>
         </div>
     </div>

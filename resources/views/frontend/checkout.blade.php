@@ -108,7 +108,7 @@
                             <hr>
                             <h6>Total Price: <strong>Tk. {{ $total }}</strong></h6>
                             <button type="submit" class="btn btn-primary bg-success w-100">Place Order | COD</button>
-                            <button type ='button'class="btn btn-primary w-100 mt-3 razorpay-btn">Pay With Razor Pay</button>
+                            <button type ='submit'class="btn btn-primary w-100 mt-3 razorpay-btn">Pay With Razor Pay</button>
                         </div>
                     </div>
                 </div>
